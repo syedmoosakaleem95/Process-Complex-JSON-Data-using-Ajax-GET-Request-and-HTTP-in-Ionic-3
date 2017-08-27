@@ -14,73 +14,17 @@
 
 <ion-content padding>
   
-
-<button ion-button class="text-center" color="secondary" (click)="loginwithfb()" *ngIf="!facebook.loggedIn">Login With Facebook</button>
-<button ion-button (click)="logoutwithfb()">Logout With Facebook</button>
-
-<ion-card *ngIf="facebook.loggedIn">
-    
-      <ion-item>
-        <ion-avatar item-start>
-          <img src="{{ facebook.profilePicture }}">
-        </ion-avatar>
-        <h2>{{ facebook.name }}</h2>
-        <p>{{ facebook.email }}</p>
+   <button ion-button (click)="loadJson()">Load Users</button> 
+    <ion-list>
+      <ion-item *ngFor="let user of users">
+          <ion-avatar item-start>
+            <img src="{{user.picture.large}}" alt="">  
+          </ion-avatar>
+          <h2>{{user.name.title}}   {{user.name.first}}</h2>
+          <br/>
+          <p>{{user.email}}</p>
+          <br/>
+          <ion-note>{{user.registered}}</ion-note>
       </ion-item>
-    
-      <ion-card-content>
-        <p>Wait a minute. Wait a minute, 
-          Doc. Uhhh... Are you telling me
-           that you built a time machine...
-            out of a DeLorean?! Whoa. This is heavy.</p>
-      </ion-card-content>
-</ion-card>
-
-
-
-
-
-
-
-  <!-- <button ion-button (click)="loadJson()">Load Users</button> -->
-  <!-- <ion-list>
-
-    <ion-item *ngFor="let user of users">
-        <ion-avatar item-start>
-          <img src="{{user.picture.large}}" alt="">  
-        </ion-avatar>
-        <h2>{{user.name.title}}   {{user.name.first}}</h2>
-        <br/>
-        <p>{{user.email}}</p>
-        <br/>
-        <ion-note>{{user.registered}}</ion-note>
-    </ion-item>
-  </ion-list> -->
-
-
-  <!-- <ion-list>
-    <ion-row> 
-      <ion-col col-6>
-        <ion-input type="text" [(ngModel)]="Contact" placeholder="Add new Contact"></ion-input>
-      </ion-col>
-      <ion-col>
-        <button ion-button color="secondary" (click)="addContact()">Add!</button>
-      </ion-col>
-    </ion-row>
-  </ion-list>
-
-  <ion-list>
-    <ion-item-sliding *ngFor="let contact of contactsList | async"> 
-      <ion-item>
-        {{contact.$value}}
-      </ion-item>
-
-      <ion-item-options side="right">
-        <button ion-button icon-only (click)="deleteContact(contact.$key)">
-          <ion-icon name="trash">  
-          </ion-icon>
-        </button>
-      </ion-item-options>
-    </ion-item-sliding>
-  </ion-list> -->
+    </ion-list>
 </ion-content>
